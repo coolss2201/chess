@@ -19,7 +19,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="box" id="box"></div>    
+    <section class="box" id="box"></section>    
 
     <script>
         board="";
@@ -32,46 +32,56 @@
        board+=brk;
     }
     document.getElementById('box').innerHTML=board;
-    document.getElementById('00').innerHTML="<div id='ju' class='inside' >&#9820</div>"
-    document.getElementById('01').innerHTML="<div class='inside' >&#9822</div>"
-    document.getElementById('02').innerHTML="<div class='inside' >&#9821</div>"
-    document.getElementById('03').innerHTML="<div class='inside' >&#9819</div>"
-    document.getElementById('04').innerHTML="<div class='inside' >&#9818</div>"
-    document.getElementById('05').innerHTML="<div class='inside' >&#9821</div>"
-    document.getElementById('06').innerHTML="<div class='inside' >&#9822</div>"
-    document.getElementById('07').innerHTML="<div class='inside' >&#9820</div>"
-    document.getElementById('10').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('11').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('12').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('13').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('14').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('15').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('16').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('17').innerHTML="<div class='inside' >&#9823</div>"
-    document.getElementById('60').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('61').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('62').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('63').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('64').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('65').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('66').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('67').innerHTML="<div class='inside' >&#9817</div>"
-    document.getElementById('70').innerHTML="<div class='inside' >&#9814</div>"
-    document.getElementById('71').innerHTML="<div class='inside' >&#9816</div>"
-    document.getElementById('72').innerHTML="<div class='inside' >&#9815</div>"
-    document.getElementById('73').innerHTML="<div class='inside' >&#9813</div>"
-    document.getElementById('74').innerHTML="<div class='inside' >&#9812</div>"
-    document.getElementById('75').innerHTML="<div class='inside' >&#9815</div>"
-    document.getElementById('76').innerHTML="<div class='inside' >&#9816</div>"
-    document.getElementById('77').innerHTML="<div class='inside' >&#9814</div>"
-    $("#52").click(function(){
-        $("#62").html("")
-        $("#52").html("<div class='inside' >&#9817</div>")
-    })
-    $('div').click(function(evt){
+    document.getElementById('00').innerHTML="<p id='ju' class='inside'>&#9820</p>"
+    document.getElementById('01').innerHTML="<p class='inside' >&#9822</p>"
+    document.getElementById('02').innerHTML="<p class='inside' >&#9821</p>"
+    document.getElementById('03').innerHTML="<p class='inside' >&#9819</p>"
+    document.getElementById('04').innerHTML="<p class='inside' >&#9818</p>"
+    document.getElementById('05').innerHTML="<p class='inside' >&#9821</p>"
+    document.getElementById('06').innerHTML="<p class='inside' >&#9822</p>"
+    document.getElementById('07').innerHTML="<p class='inside' >&#9820</p>"
+    document.getElementById('10').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('11').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('12').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('13').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('14').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('15').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('16').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('17').innerHTML="<p class='inside' >&#9823</p>"
+    document.getElementById('60').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('61').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('62').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('63').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('64').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('65').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('66').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('67').innerHTML="<p class='inside' >&#9817</p>"
+    document.getElementById('70').innerHTML="<p class='inside' >&#9814</p>"
+    document.getElementById('71').innerHTML="<p class='inside' >&#9816</p>"
+    document.getElementById('72').innerHTML="<p class='inside' >&#9815</p>"
+    document.getElementById('73').innerHTML="<p class='inside' >&#9813</p>"
+    document.getElementById('74').innerHTML="<p class='inside' >&#9812</p>"
+    document.getElementById('75').innerHTML="<p class='inside' >&#9815</p>"
+    document.getElementById('76').innerHTML="<p class='inside' >&#9816</p>"
+    document.getElementById('77').innerHTML="<p class='inside' >&#9814</p>"
+    
+    $("div").click(function(evt){
     var currentID = this.id || "No ID!";
-    alert(currentID)
+    if(this.innerText.charCodeAt(0)=="9817" || this.innerText.charCodeAt(0)=="9823")
+    {
+        pawn(currentID)
+    }
     })
+    function pawn(currentID){
+     $("div").click(function(evt){
+         var cd=this.id || "No ID!";
+         if((parseInt(currentID)-10)==cd)
+         {
+          document.getElementById(currentID).innerHTML=""
+          document.getElementById(cd).innerHTML="<p class='inside' >&#9817</p>";
+         }
+     })
+    }
     </script>
 </body>
 </html>
