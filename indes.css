@@ -1,8 +1,16 @@
+*{
+    margin:0px;
+    padding:0px;
+}
 .box{
     background-image: url("chess.jpg");
-    width: 600px;
-    height:600px;
+    background-repeat: no-repeat;
     display:grid;
-    grid-template-rows: repeat(8,30px);
-    grid-template-columns: repeat(8,30px);
+    grid-template-rows: repeat(8,75px);
+    grid-template-columns: repeat(8,75px);
+    margin-left:28%;
+}
+.inside{
+    font-size:50px;
+    text-align:center;
 }

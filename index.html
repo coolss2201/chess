@@ -16,23 +16,62 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="indes.css">
-   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="box" id="box">
-        <script>
-            board="";
-           brk =""; 
-  
-          for(let i=0;i<8;i++){
-            board+=brk;
-            brk="";
-               for(let j=0;j<8;j++){
-              brk+="<div  id="+i+j+">as</div>"
-           }
-        }
-           document.getElementById('box').innerHTML=board;
-          </script>
-        </div>
+    <div class="box" id="box"></div>    
+
+    <script>
+        board="";
+       brk =""; 
+      for(let i=0;i<8;i++){
+        brk="";
+           for(let j=0;j<8;j++){
+          brk+="<div id="+i+j+"></div>"
+       }
+       board+=brk;
+    }
+    document.getElementById('box').innerHTML=board;
+    document.getElementById('00').innerHTML="<div id='ju' class='inside' >&#9820</div>"
+    document.getElementById('01').innerHTML="<div class='inside' >&#9822</div>"
+    document.getElementById('02').innerHTML="<div class='inside' >&#9821</div>"
+    document.getElementById('03').innerHTML="<div class='inside' >&#9819</div>"
+    document.getElementById('04').innerHTML="<div class='inside' >&#9818</div>"
+    document.getElementById('05').innerHTML="<div class='inside' >&#9821</div>"
+    document.getElementById('06').innerHTML="<div class='inside' >&#9822</div>"
+    document.getElementById('07').innerHTML="<div class='inside' >&#9820</div>"
+    document.getElementById('10').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('11').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('12').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('13').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('14').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('15').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('16').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('17').innerHTML="<div class='inside' >&#9823</div>"
+    document.getElementById('60').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('61').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('62').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('63').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('64').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('65').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('66').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('67').innerHTML="<div class='inside' >&#9817</div>"
+    document.getElementById('70').innerHTML="<div class='inside' >&#9814</div>"
+    document.getElementById('71').innerHTML="<div class='inside' >&#9816</div>"
+    document.getElementById('72').innerHTML="<div class='inside' >&#9815</div>"
+    document.getElementById('73').innerHTML="<div class='inside' >&#9813</div>"
+    document.getElementById('74').innerHTML="<div class='inside' >&#9812</div>"
+    document.getElementById('75').innerHTML="<div class='inside' >&#9815</div>"
+    document.getElementById('76').innerHTML="<div class='inside' >&#9816</div>"
+    document.getElementById('77').innerHTML="<div class='inside' >&#9814</div>"
+    $("#52").click(function(){
+        $("#62").html("")
+        $("#52").html("<div class='inside' >&#9817</div>")
+    })
+    $('div').click(function(evt){
+    var currentID = this.id || "No ID!";
+    alert(currentID)
+    })
+    </script>
 </body>
 </html>
