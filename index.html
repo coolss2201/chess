@@ -15,24 +15,32 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="indes.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <section class="box" id="box"></section>    
+    
+    <p class="chessboard box" id="box"></p>    
 
     <script>
-        board="";
+       board="";
        brk =""; 
+       cvar="black";
       for(let i=0;i<8;i++){
         brk="";
            for(let j=0;j<8;j++){
+               if(cvar=="white"){cvar="black"}
+               else {cvar="white"}
+
           brk+="<div id="+i+j+"></div>"
        }
        board+=brk;
+       if(cvar=="white"){cvar="black"}
+       else {cvar="white"}
     }
     document.getElementById('box').innerHTML=board;
-    document.getElementById('00').innerHTML="<p id='ju' class='inside'>&#9820</p>"
+    document.getElementById('33').innerHTML="<p class='inside' >&#9820</p>"
     document.getElementById('01').innerHTML="<p class='inside' >&#9822</p>"
     document.getElementById('02').innerHTML="<p class='inside' >&#9821</p>"
     document.getElementById('03').innerHTML="<p class='inside' >&#9819</p>"
@@ -64,24 +72,8 @@
     document.getElementById('75').innerHTML="<p class='inside' >&#9815</p>"
     document.getElementById('76').innerHTML="<p class='inside' >&#9816</p>"
     document.getElementById('77').innerHTML="<p class='inside' >&#9814</p>"
-    
-    $("div").click(function(evt){
-    var currentID = this.id || "No ID!";
-    if(this.innerText.charCodeAt(0)=="9817" || this.innerText.charCodeAt(0)=="9823")
-    {
-        pawn(currentID)
-    }
-    })
-    function pawn(currentID){
-     $("div").click(function(evt){
-         var cd=this.id || "No ID!";
-         if((parseInt(currentID)-10)==cd)
-         {
-          document.getElementById(currentID).innerHTML=""
-          document.getElementById(cd).innerHTML="<p class='inside' >&#9817</p>";
-         }
-     })
-    }
-    </script>
+</script>  
+
 </body>
+<script src="index.js"></script>
 </html>
