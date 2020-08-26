@@ -1,6 +1,8 @@
 
 
     var currentID="",prevID="",q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8="";
+    var b1="",b2="",b3="",b4="";
+    var c1="",c2="",c3="",c4="";
     var num=1;
     $("div").click(function(evt){
         currentID=this.id;
@@ -41,45 +43,100 @@
         }
         /// boat
         else if(document.getElementById(currentID).innerText.charCodeAt(0)=="9820" || document.getElementById(currentID).innerText.charCodeAt(0)=="9814"){
-            var boatId=currentID;
             prevID=currentID;
-            while((parseInt(boatId)+10)<=77)
-            {   
-                document.getElementById(parseInt(boatId)+10).classList.add("col");
-                boatId=parseInt(boatId)+10;
-            }
-            var boatId2=currentID.charAt(0);
-            var t=currentID.charAt(1);
-            console.log(boatId2)
-            while((parseInt(boatId2)-1)>=0)
+            var u=currentID.charAt(0);
+            var s=currentID.charAt(1);
+            while((parseInt(u)+1)<=7)
             {
-                console.log("boatId"+boatId2)
-                boatId2=parseInt(boatId2)-1;
-                document.getElementById(boatId2+t).classList.add("col");
-                
-                console.log("boatId"+boatId2)
+                u=parseInt(u)+1;
+                if(document.getElementById(u.toString()+s).innerHTML==""){
+                addGreen(u.toString(),s);
+                if(parseInt(u)==7){
+                    b1=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s).attr("class")){
+                        b1=(parseInt(u)-1).toString()+s.toString();
+                    break;}
+                    else{
+                        b1=u.toString()+s.toString();
+                        addGreen(u.toString(),s);
+                    break;    
+                }
+                }
             }
-            var boatId2=currentID.charAt(0);
-            var t=currentID.charAt(1);
-            while((parseInt(t)-1)>=0)
+            var u=currentID.charAt(0);
+            var s=currentID.charAt(1);
+            while((parseInt(u)-1)>=0 )
             {
-                console.log("boatId"+boatId2)
-                t=parseInt(t)-1;
-                document.getElementById(boatId2+t).classList.add("col");
-                
-                console.log("boatId"+boatId2)
+                u=parseInt(u)-1;
+                if(document.getElementById(u.toString()+s).innerHTML==""){
+                addGreen(u.toString(),s);
+                if(parseInt(u)==0){
+                    b2=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s).attr("class")){
+                        b2=(parseInt(u)+1).toString()+s.toString();
+                    break;}
+                    else{
+                        addGreen(u.toString(),s);
+                        b2=u.toString()+s.toString();
+                    break;    
+                }
+                }
             }
-            var boatId2=currentID.charAt(0);
-            var t=currentID.charAt(1);
-            while((parseInt(t)+1)<=7)
+            var u=currentID.charAt(0);
+            var s=currentID.charAt(1);
+            while((parseInt(s)-1)>=0)
             {
-                console.log("boatId"+boatId2)
-                t=parseInt(t)+1;
-                document.getElementById(boatId2+t).classList.add("col");
                 
-                console.log("boatId"+boatId2)
+                s=parseInt(s)-1;
+                if(document.getElementById(u+s.toString()).innerHTML==""){
+                addGreen(u,s.toString());
+                if(parseInt(s)==0){
+                    b3=u.toString()+(parseInt(s)).toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u+s.toString()).attr("class")){
+                        b3=u.toString()+(parseInt(s)+1).toString();
+                    break;}
+                    else{
+                        b3=u.toString()+s.toString();
+                        addGreen(u,s.toString());
+                    break;    
+                }
+                }
             }
-            
+            var u=currentID.charAt(0);
+            var s=currentID.charAt(1);
+            while( (parseInt(s)+1)<=7)
+            {
+                s=parseInt(s)+1;
+                if(document.getElementById(u+s.toString()).innerHTML==""){
+                addGreen(u,s.toString());
+                if(parseInt(s)==7){
+                    b4=u.toString()+(parseInt(s)).toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u+s.toString()).attr("class")){
+                        b4=u.toString()+(parseInt(s)-1).toString();
+                    break;}
+                    else{
+                        b4=u.toString()+s.toString();
+                        addGreen(u,s.toString());
+                    break;    
+                }
+                }
+            }
     return 3;
         }
 
@@ -93,7 +150,24 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
+                if(document.getElementById(u.toString()+s.toString()).innerHTML==""){
+                addGreen(u.toString(),s.toString());
+                if(parseInt(u)==7 || parseInt(s)==7){
+                    c1=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s.toString()).attr("class")){
+                        c1=(parseInt(u)-1).toString()+(parseInt(s)-1).toString();
+                    break;
+                    }
+                    else{
+                        addGreen(u.toString(),s.toString());
+                        c1=u.toString()+s.toString();
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -101,7 +175,23 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
+                if(document.getElementById(u.toString()+s.toString()).innerHTML==""){
+                addGreen(u.toString(),s.toString());
+                if(parseInt(u)==0 || parseInt(s)==0){
+                    c2=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s.toString()).attr("class")){
+                        c2=(parseInt(u)+1).toString()+(parseInt(s)+1).toString();
+                        break;}
+                    else{
+                        addGreen(u.toString(),s.toString());
+                        c2=u.toString()+s.toString();
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -109,7 +199,23 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
+                if(document.getElementById(u.toString()+s.toString()).innerHTML==""){
+                addGreen(u.toString(),s.toString());
+                if(parseInt(u)==7 || parseInt(s)==0){
+                    c3=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s.toString()).attr("class")){
+                        c3=(parseInt(u)-1).toString()+(parseInt(s)+1).toString();
+                    break;}
+                    else{
+                        addGreen(u.toString(),s.toString());
+                        c3=u.toString()+s.toString();
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -117,9 +223,26 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
+                if(document.getElementById(u.toString()+s.toString()).innerHTML==""){
+                addGreen(u.toString(),s.toString());
+                if(parseInt(u)==0 || parseInt(s)==7){
+                    c4=u.toString()+s.toString();
+                }
+                }
+                else
+                {
+                    if($("#"+currentID).attr("class")==$("#"+u.toString()+s.toString()).attr("class")){
+                        c4=(parseInt(u)+1).toString()+(parseInt(s)-1).toString();
+                        console.log(q4+"q4")
+                    break;}
+                    else{  
+                        addGreen(u.toString(),s.toString());
+                        c4=u.toString()+s.toString();
+                    break;    
+                }
+                }
             }
-    return 4;
+             return 4;
         }
         /// queen
         else if(document.getElementById(currentID).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9813")
@@ -558,182 +681,85 @@
 
 
     function boat(){
-        if(document.getElementById(currentID).innerHTML!=""){
-            boatId=prevID;
-            while((parseInt(boatId)+10)<=77)
-            {   
-                document.getElementById(parseInt(boatId)+10).classList.remove("col");
-                boatId=parseInt(boatId)+10;
-            }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(boatId2)-1)>=0)
+            var u=prevID.charAt(0);
+            var s=prevID.charAt(1);
+            while((parseInt(u)+1)<=parseInt(b1.charAt(0)))
             {
-                boatId2=parseInt(boatId2)-1;
-                document.getElementById(boatId2+t).classList.remove("col");
+                u=parseInt(u)+1;
+                removeGreen(u.toString(),s)
+                check(currentID,prevID,u,s);
             }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(t)-1)>=0)
+            var u=prevID.charAt(0);
+            var s=prevID.charAt(1);
+            while((parseInt(u)-1)>=parseInt(b2.charAt(0)) )
             {
-                t=parseInt(t)-1;
-                document.getElementById(boatId2+t).classList.remove("col");
+                u=parseInt(u)-1;
+                
+                removeGreen(u.toString(),s)
+                check(currentID,prevID,u,s);
             }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(t)+1)<=7)
+            var u=prevID.charAt(0);
+            var s=prevID.charAt(1);
+            while((parseInt(s)-1)>=parseInt(b3.charAt(1)))
             {
-                t=parseInt(t)+1;
-                document.getElementById(boatId2+t).classList.remove("col");
+                
+                s=parseInt(s)-1;
+                removeGreen(u,s.toString())
+                check(currentID,prevID,u,s);
             }
+            var u=prevID.charAt(0);
+            var s=prevID.charAt(1);
+            while( (parseInt(s)+1)<=parseInt(b4.charAt(1)))
+            {
+                s=parseInt(s)+1;
+                removeGreen(u,s.toString())
+                check(currentID,prevID,u,s);
+            }
+            b1="",b2="",b3="",b4="";
         return 1;
-        }
-        else{
-            boatId=prevID;
-            while((parseInt(boatId)+10)<=77)
-            {   
-                document.getElementById(parseInt(boatId)+10).classList.remove("col");
-                if(currentID==parseInt(boatId)+10){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                boatId=parseInt(boatId)+10;
-            }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(boatId2)-1)>=0)
-            {
-                boatId2=parseInt(boatId2)-1;
-                document.getElementById(boatId2+t).classList.remove("col");
-                if(currentID==boatId2+t){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-            }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(t)-1)>=0)
-            {
-                t=parseInt(t)-1;
-                document.getElementById(boatId2+t).classList.remove("col");
-                if(currentID==boatId2+t){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-            }
-            var boatId2=prevID.charAt(0);
-            var t=prevID.charAt(1);
-            while((parseInt(t)+1)<=7)
-            {
-                t=parseInt(t)+1;
-                document.getElementById(boatId2+t).classList.remove("col");
-                if(currentID==boatId2+t){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-            }
-        return 1;
-    }
     }
     
 
 
 
     function bishop(){
-        if(document.getElementById(currentID).innerHTML!=""){
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-            }
-            return 1;
-            }
-            else{
-                var u=prevID.charAt(0);
-                var s=prevID.charAt(1);
-                while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
-                {
-                    u=parseInt(u)+1;
-                    s=parseInt(s)+1;
-                    document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                    if(currentID==u.toString()+s.toString()){
-                        var z=document.getElementById(prevID).innerHTML;
-                        document.getElementById(currentID).innerHTML=z;
-                        document.getElementById(prevID).innerHTML=""
-                    }
-                }
-                var u=prevID.charAt(0);
-                var s=prevID.charAt(1);
-                while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
-                {
-                    u=parseInt(u)-1;
-                    s=parseInt(s)-1;
-                    document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                    if(currentID==u.toString()+s.toString()){
-                        var z=document.getElementById(prevID).innerHTML;
-                        document.getElementById(currentID).innerHTML=z;
-                        document.getElementById(prevID).innerHTML=""
-                    }
-                }
-                var u=prevID.charAt(0);
-                var s=prevID.charAt(1);
-                while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
-                {
-                    u=parseInt(u)+1;
-                    s=parseInt(s)-1;
-                    document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                    if(currentID==u.toString()+s.toString()){
-                        var z=document.getElementById(prevID).innerHTML;
-                        document.getElementById(currentID).innerHTML=z;
-                        document.getElementById(prevID).innerHTML=""
-                    }
-                }
-                var u=prevID.charAt(0);
-                var s=prevID.charAt(1);
-                while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
-                {
-                    u=parseInt(u)-1;
-                    s=parseInt(s)+1;
-                    document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                    if(currentID==u.toString()+s.toString()){
-                        var z=document.getElementById(prevID).innerHTML;
-                        document.getElementById(currentID).innerHTML=z;
-                        document.getElementById(prevID).innerHTML=""
-                    }
-                }
-        return 1;
+        var u=prevID.charAt(0);
+        var s=prevID.charAt(1);
+        while((parseInt(u)+1)<=parseInt(c1.charAt(0)) && (parseInt(s)+1)<=parseInt(c1.charAt(1)))
+        {
+            u=parseInt(u)+1;
+            s=parseInt(s)+1;
+            removeGreen(u.toString(),s.toString())
+            check(currentID,prevID,u,s);
         }
+        var u=prevID.charAt(0);
+        var s=prevID.charAt(1);
+        while((parseInt(u)-1)>=parseInt(c2.charAt(0)) && (parseInt(s)-1)>=parseInt(c2.charAt(1)))
+        {
+            u=parseInt(u)-1;
+            s=parseInt(s)-1;
+            removeGreen(u.toString(),s.toString())
+            check(currentID,prevID,u,s);
+        }
+        var u=prevID.charAt(0);
+        var s=prevID.charAt(1);
+        while((parseInt(u)+1)<=parseInt(c3.charAt(0)) && (parseInt(s)-1)>=parseInt(c3.charAt(1))){
+            u=parseInt(u)+1;
+            s=parseInt(s)-1;
+            removeGreen(u.toString(),s.toString())
+            check(currentID,prevID,u,s);
+        }
+        var u=prevID.charAt(0);
+        var s=prevID.charAt(1);
+        while((parseInt(u)-1)>=parseInt(c4.charAt(0)) && (parseInt(s)+1)<=parseInt(c4.charAt(1)))
+        {
+            u=parseInt(u)-1;
+            s=parseInt(s)+1;
+            removeGreen(u.toString(),s.toString())
+            check(currentID,prevID,u,s);
+        }
+        c1="",c2="",c3="",c4="";
+        return 1;      
     }
 
 
