@@ -3,6 +3,7 @@
     var currentID="",prevID="",q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8="";
     var b1="",b2="",b3="",b4="";
     var c1="",c2="",c3="",c4="";
+    var k1="",k2="",k3="",k4="";
     var num=1;
     $("div").click(function(evt){
         currentID=this.id;
@@ -478,8 +479,8 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());    
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -487,8 +488,8 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());  
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -496,8 +497,8 @@
             {
                 u=parseInt(u)+2;
                 s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString()); 
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -505,8 +506,8 @@
             {
                 u=parseInt(u)+2;
                 s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());  
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -514,8 +515,8 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString()); 
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -523,8 +524,8 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -532,8 +533,8 @@
             {
                 u=parseInt(u)-2;
                 s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-                
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -541,10 +542,10 @@
             {
                 u=parseInt(u)-2;
                 s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.add("col");
-               
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="" || $("#"+currentID).attr("class")!=$("#"+u.toString()+s.toString()).attr("class"))
+                addGreen(u.toString(),s.toString());
             }
-    return 6;
+            return 6;
         }
         //// king
         else if(document.getElementById(currentID).innerText.charCodeAt(0)=="9812" || document.getElementById(currentID).innerText.charCodeAt(0)=="9818")
@@ -823,8 +824,7 @@
             var u=prevID.charAt(0);
             var s=prevID.charAt(1);
             while((parseInt(s)-1)>=parseInt(q7.charAt(1)))
-            {
-                
+            {  
                 s=parseInt(s)-1;
                 removeGreen(u,s.toString())
                 check(currentID,prevID,u,s);
@@ -845,199 +845,79 @@
 
 /// knight function
 function knight(){
-    if(document.getElementById(currentID).innerHTML!=""){
-        var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+2)<=7 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)+2;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+2)<=7 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)+2;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-2)>=0 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)-2;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-2)>=0 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)-2;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-               
-            }
-                
-                
-        
-        
-        }else{
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)-2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+2)<=7 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)+2;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+2)<=7 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)+2;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
-            {
-                u=parseInt(u)+1;
-                s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
-            {
-                u=parseInt(u)-1;
-                s=parseInt(s)+2;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-2)>=0 && (parseInt(s)-1)>=0)
-            {
-                u=parseInt(u)-2;
-                s=parseInt(s)-1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-                
-            }
-            var u=prevID.charAt(0);
-            var s=prevID.charAt(1);
-            if((parseInt(u)-2)>=0 && (parseInt(s)+1)<=7)
-            {
-                u=parseInt(u)-2;
-                s=parseInt(s)+1;
-                document.getElementById(u.toString()+s.toString()).classList.remove("col");
-                if(currentID==u.toString()+s.toString()){
-                    var z=document.getElementById(prevID).innerHTML;
-                    document.getElementById(currentID).innerHTML=z;
-                    document.getElementById(prevID).innerHTML=""
-                }
-               
-            }
-        }
-        return 1;
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-2;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }           
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-2;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)-1;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)+1;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)+2;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+2;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)-1;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)+1;
+        removeGreen(u.toString(),s.toString())
+        check(currentID,prevID,u,s);
+    }
+    return 1;
     }
 
 
