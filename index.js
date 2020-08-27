@@ -4,8 +4,12 @@
     var b1="",b2="",b3="",b4="";
     var c1="",c2="",c3="",c4="";
     var num=1;
+    var whiteKingPos="74",blackKingPos="04";
+    var flag="white";
     $("div").click(function(evt){
         currentID=this.id;
+        if(flag=="white" && ($("#"+currentID).attr("class")=="white" || document.getElementById(currentID).innerHTML==""))
+        {
          if(num==1){
             num=fun1();
         }else if(num==0){
@@ -22,6 +26,26 @@
             num=knight();
         }else if(num==7){
             num=king();
+        }}
+        if(flag=="black" && ($("#"+currentID).attr("class")=="black" || document.getElementById(currentID).innerHTML==""))
+        { if(num==1){
+            num=fun1();
+        }else if(num==0){
+            num=bpawn();
+        }else if(num==2){
+            num=wpawn();
+        }else if(num==3){
+            num=boat();
+        }else if(num==4){
+            num=bishop();
+        }else if(num==5){
+            num=queen();
+        }else if(num==6){
+            num=knight();
+        }else if(num==7){
+            num=king();
+        }
+
         }
         
     })
@@ -39,6 +63,11 @@
         addGreen((parseInt(u)+1).toString(),(parseInt(s)-1).toString());
         if((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7 && document.getElementById((parseInt(u)+1).toString()+(parseInt(s)+1).toString()).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+(parseInt(u)+1).toString()+(parseInt(s)+1).toString()).attr("class"))
         addGreen((parseInt(u)+1).toString(),(parseInt(s)+1).toString());
+        if(parseInt(u)===1 && document.getElementById((parseInt(u)+1).toString()+s).innerHTML==""&& document.getElementById((parseInt(u)+2).toString()+s).innerHTML==""){
+            addGreen((parseInt(u)+1).toString(),s);
+            addGreen((parseInt(u)+2).toString(),s);
+        }
+        
         return 0;
         }
         /// white pawn
@@ -52,6 +81,10 @@
             addGreen((parseInt(u)-1).toString(),(parseInt(s)-1).toString());
             if((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7 && document.getElementById((parseInt(u)-1).toString()+(parseInt(s)+1).toString()).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+(parseInt(u)-1).toString()+(parseInt(s)+1).toString()).attr("class"))
             addGreen((parseInt(u)-1).toString(),(parseInt(s)+1).toString());
+            if(parseInt(u)===6 && document.getElementById((parseInt(u)-1).toString()+s).innerHTML==""&& document.getElementById((parseInt(u)-2).toString()+s).innerHTML==""){
+                addGreen((parseInt(u)-1).toString(),s);
+                addGreen((parseInt(u)-2).toString(),s);
+            }
         return 2;
         }
         /// boat
@@ -655,25 +688,36 @@
         var u=prevID.charAt(0);
         var s=prevID.charAt(1);
         removeGreen((parseInt(u)+1).toString(),s.toString());
+        removeGreen((parseInt(u)+2).toString(),s.toString());
         removeGreen((parseInt(u)+1).toString(),(parseInt(s)-1).toString())
         removeGreen((parseInt(u)+1).toString(),(parseInt(s)+1).toString())
         if(currentID==(parseInt(u)+1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="white"
+          return 1;
+        }
+        if(currentID==(parseInt(u)+2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
+        {
+          Empty(currentID,prevID);
+          flag="white"
           return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="white"
             return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="white"
             return 1;
         }
-        else
+        else{
         return 1;
+        }
     }
 
 
@@ -681,25 +725,36 @@
         var u=prevID.charAt(0);
         var s=prevID.charAt(1);
         removeGreen((parseInt(u)-1).toString(),s.toString());
+        removeGreen((parseInt(u)-2).toString(),s.toString());
         removeGreen((parseInt(u)-1).toString(),(parseInt(s)-1).toString())
         removeGreen((parseInt(u)-1).toString(),(parseInt(s)+1).toString())
         if(currentID==(parseInt(u)-1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="black"
+          return 1;
+        }
+        if(currentID==(parseInt(u)-2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
+        {
+          Empty(currentID,prevID);
+          flag="black"
           return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="black"
             return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="black"
             return 1;
         }
-        else
+        else{
         return 1;
+        }
     }
 
 
@@ -797,6 +852,7 @@
                 u=parseInt(u)+1;
                 s=parseInt(s)+1;
                 removeGreen(u.toString(),s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -806,6 +862,7 @@
                 u=parseInt(u)-1;
                 s=parseInt(s)-1;
                 removeGreen(u.toString(),s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -814,6 +871,7 @@
                 u=parseInt(u)+1;
                 s=parseInt(s)-1;
                 removeGreen(u.toString(),s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -823,6 +881,7 @@
                 u=parseInt(u)-1;
                 s=parseInt(s)+1;
                 removeGreen(u.toString(),s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             ///////////////////////////////////////////////////
@@ -832,6 +891,7 @@
             {
                 u=parseInt(u)+1;
                 removeGreen(u.toString(),s)
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -841,6 +901,7 @@
                 u=parseInt(u)-1;
                 
                 removeGreen(u.toString(),s)
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -849,6 +910,7 @@
             {  
                 s=parseInt(s)-1;
                 removeGreen(u,s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -857,6 +919,7 @@
             {
                 s=parseInt(s)+1;
                 removeGreen(u,s.toString())
+                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8=""
@@ -942,15 +1005,16 @@ function knight(){
     return 1;
     }
 
-
+    /// king
     function king(){
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
     if((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
-    {
+    {   
         u=parseInt(u)+1;
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -960,6 +1024,7 @@ function knight(){
         u=parseInt(u)-1;
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -969,6 +1034,7 @@ function knight(){
         u=parseInt(u)+1;
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -978,6 +1044,7 @@ function knight(){
         u=parseInt(u)-1;
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
             ///////////////////////////////////////////////////
@@ -988,6 +1055,7 @@ function knight(){
         u=parseInt(u)+1;
                
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -997,6 +1065,7 @@ function knight(){
         u=parseInt(u)-1;
                 
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -1006,6 +1075,7 @@ function knight(){
                 
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }
     var u=prevID.charAt(0);
@@ -1014,6 +1084,7 @@ function knight(){
     {
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
+        KingTracker(prevID,u,s)
         check(currentID,prevID,u,s);
     }      
     return 1;
@@ -1022,49 +1093,86 @@ function knight(){
         
 function addGreen(i,j){
     $("#"+i+j).css({
-        "background-color":"green",
+        "background-color":"rgba(35, 168, 30,0.4)",
         "border-radius":"50%",
-        "opacity":"0.3"
+        "color":"#ff0000",
+        
     })
 }
 function removeGreen(i,j){
     $("#"+i+j).css({
         "background-color":"",
         "border-radius":"",
-        "opacity":"1"
+        "opacity":"1",
+        "color":"",
     })
 }
 
 
 function Empty(currentID,prevID)
-{
+{   document.getElementById("myAudio").play()
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+currentID).attr("class"));
-    document.getElementById(prevID).innerHTML=""
+    document.getElementById(prevID).innerHTML="";
+    
 }
+
+
 function nonEmpty(currentID,prevID)
-{
+{   document.getElementById("myAudio").play()
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(prevID).innerHTML=""
     document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
    document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+   
 }
+
+
 function check(currentID,prevID,u,s)
-{
+{   
     if(currentID==u.toString()+s.toString())
     {
         if(document.getElementById(currentID).innerHTML!=""){
             if($("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
             {
-                nonEmpty(currentID,prevID);
+             nonEmpty(currentID,prevID);
+             if(flag=="white")
+             flag="black"
+             else
+             flag="white";
             }
             return 1;
         }
         else{
             Empty(currentID,prevID);
-        }
+            if(flag=="white")
+             flag="black"
+             else
+             flag="white";
+             return 1;
+            }
     }
+}
+
+function KingTracker(prevID,u,s){
+    if(document.getElementById(prevID).innerText.charCodeAt(0)=="9812"  ){
+       
+        whiteKingPos=u.toString()+s.toString();
+
+    }else if(document.getElementById(prevID).innerText.charCodeAt(0)=="9818"){
+
+        blackKingPos=u.toString()+s.toString();
+    }
+}
+
+
+function kingcheck(u,s){
+if(blackKingPos==u.toString()+s.toString()){
+    alert("black king check")
+}
+
+
 }
