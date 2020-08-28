@@ -6,13 +6,6 @@ body{
     background-image: url("back.png");
     background-size: cover;
     background-repeat: no-repeat;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns:200px 650px 200px;
-    column-gap: 100px;
-    grid-template-areas: 
-    "#left .chessboard #right"
-    ;
 }
 .box{
     background-image: url("chess.svg");
@@ -51,22 +44,10 @@ body{
     background-repeat: no-repeat;
     box-shadow: 8px 8px 5px black;
 }
-@media(max-width:1000px)
-{
-    .cross{
-        transform: rotate(90deg);
-    }
-    body{
-        display: grid;
-    grid-template-rows:200px 650px 200px ;
-    grid-template-columns:1fr;
-    
-    grid-template-areas: 
-    "#left"
-    ".chessboard"
-    "#right"
-    ;
-    }
-    
-    
+
+#right{
+    float: right;
+}
+#left{
+    float: left;
 }
