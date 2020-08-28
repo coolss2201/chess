@@ -20,9 +20,10 @@
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <section id="left" class="cross"></section>
     
     <p class="chessboard box" id="box"></p>    
-
+    <section id="right" class="cross"></section>
     <script>
        board="";
        brk =""; 
@@ -39,6 +40,30 @@
        if(cvar=="white"){cvar="black"}
        else {cvar="white"}
     }
+    var left="";
+    var t=""
+    for(let i=1;i<=8;i++)
+    {
+        t="";
+        for(let j=10;j<=11;j++)
+        {
+           t+="<div id="+i+j+"></div>" 
+        }
+        left+=t;
+    }
+    var right="";
+    var t=""
+    for(let i=1;i<=8;i++)
+    {
+        t="";
+        for(let j=8;j<=9;j++)
+        {
+           t+="<div id="+i+j+"></div>" 
+        }
+        right+=t;
+    }
+    document.getElementById('left').innerHTML=left;
+    document.getElementById('right').innerHTML=right;
     document.getElementById('box').innerHTML=board;
     document.getElementById('00').innerHTML="<p class='inside' >&#9820</p>"
     document.getElementById('01').innerHTML="<p class='inside' >&#9822</p>"

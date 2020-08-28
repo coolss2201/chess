@@ -4,10 +4,15 @@
     var b1="",b2="",b3="",b4="";
     var c1="",c2="",c3="",c4="";
     var num=1;
+    var w=document.getElementById("74").innerHTML;
+    var b=document.getElementById("14").innerHTML;
     var whiteKingPos="74",blackKingPos="04";
     var flag="white";
+    var i=11,j=0,k=1,l=8;
     $("div").click(function(evt){
         console.log(flag)
+        console.log(w)
+        
         currentID=this.id;
         
          if(num==1){
@@ -1022,8 +1027,7 @@ function knight(){
         u=parseInt(u)+1;
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+        
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1032,8 +1036,7 @@ function knight(){
         u=parseInt(u)-1;
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+       
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1042,8 +1045,7 @@ function knight(){
         u=parseInt(u)+1;
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+        
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1052,8 +1054,7 @@ function knight(){
         u=parseInt(u)-1;
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+       
     }
             ///////////////////////////////////////////////////
     var u=prevID.charAt(0);
@@ -1063,8 +1064,7 @@ function knight(){
         u=parseInt(u)+1;
                
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+       
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1073,8 +1073,7 @@ function knight(){
         u=parseInt(u)-1;
                 
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+       
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1083,8 +1082,7 @@ function knight(){
                 
         s=parseInt(s)-1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+       
     }
     var u=prevID.charAt(0);
     var s=prevID.charAt(1);
@@ -1092,9 +1090,80 @@ function knight(){
     {
         s=parseInt(s)+1;
         removeGreen(u.toString(),s.toString())
-        KingTracker(prevID,u,s)
-        check(currentID,prevID,u,s);
+      
     }      
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
+    {   
+        u=parseInt(u)+1;
+        s=parseInt(s)+1;
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-1;
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-1;
+         KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+1;
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+            ///////////////////////////////////////////////////
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)+1)<=7)
+    {
+        u=parseInt(u)+1;
+               
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(u)-1)>=0 )
+    {
+        u=parseInt(u)-1;
+                
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if((parseInt(s)-1)>=0)
+    {
+                
+        s=parseInt(s)-1;
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    }
+    var u=prevID.charAt(0);
+    var s=prevID.charAt(1);
+    if( (parseInt(s)+1)<=7)
+    {
+        s=parseInt(s)+1;
+        KingTracker(prevID,u,s)
+        if(check(currentID,prevID,u,s))return 1;
+    } 
     return 1;
 }
         
@@ -1132,7 +1201,9 @@ function Empty(currentID,prevID)
        document.getElementById(currentID).innerHTML=""
        document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
        document.getElementById(currentID).classList.remove($("#"+prevID).attr("class"))
-       flag="black"    
+       flag="black"
+       if(z==w)
+       whiteKingPos=prevID;    
    }
    if(flag=="black" && bkingcheck(blackKingPos))
    {
@@ -1142,6 +1213,8 @@ function Empty(currentID,prevID)
     document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
     document.getElementById(currentID).classList.remove($("#"+prevID).attr("class"))
     flag="white"
+    if(z==b)
+       BlackKingPos=prevID;
    }
    if(x==1)
    document.getElementById("myAudio").play()
@@ -1156,29 +1229,57 @@ function nonEmpty(currentID,prevID)
     var y=document.getElementById(currentID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(prevID).innerHTML=""
+    var n=$("#"+currentID).attr("class")
     document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))
+    console.log(whiteKingPos)
+    var bflag=bkingcheck(blackKingPos);
+    var wflag=wkingcheck(whiteKingPos)
+    if(flag=="white" && !wflag)
+    {
+        document.getElementById(k.toString()+l.toString()).innerHTML=y;
+        if(k+1<=8)
+        k++
+        else{
+        l++;
+        k=1;
+        }
+    }
+    else if(flag=="black" && !bflag){
+        document.getElementById(i.toString()+j.toString()).innerHTML=y;
+        if(i+1<=8)
+        i+=10
+        else{
+        j++;
+        i=11;
+        }
+
+    }
    
-  if(flag=="white" && wkingcheck(whiteKingPos))
+  if(flag=="white" && wflag)
    {x=0;
        document.getElementById(prevID).innerHTML=z;
-       document.getElementById(currentID).innerHTML=y;
-       document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
+       document.getElementById(currentID).innerHTML=y;   
        document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
        document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
-       document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+       document.getElementById(currentID).classList.add(n);
        flag="black"
+       console.log(z)
+       if(z==w){
+       whiteKingPos=prevID;
+       }
    }
-   if(flag=="black" && bkingcheck(blackKingPos))
+   if(flag=="black" && bflag)
    {x=0;
        document.getElementById(prevID).innerHTML=z;
-       document.getElementById(currentID).innerHTML=y;
-       document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
+       document.getElementById(currentID).innerHTML=y;  
        document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
        document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
-       document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+       document.getElementById(currentID).classList.add(n);
        flag="white"
+       if(z==b)
+       blackKingPos=prevID;
    }
    if(x==1)
    document.getElementById("myAudio").play()
@@ -1201,7 +1302,7 @@ function check(currentID,prevID,u,s)
              else
              flag="white";
             }
-            return 1;
+            return true;
         }
         else{
             Empty(currentID,prevID);
@@ -1209,7 +1310,7 @@ function check(currentID,prevID,u,s)
              flag="black"
              else
              flag="white";
-             return 1;
+             return true;
             }
     }
 }
