@@ -1295,7 +1295,7 @@ function Empty(currentID,prevID)
        if(z==w)
        whiteKingPos=prevID;    
    }
-   if(flag=="black" && bkingcheck(blackKingPos))
+   else if(flag=="black" && bkingcheck(blackKingPos))
    {
        x=0;
     document.getElementById(prevID).innerHTML=z;
@@ -1364,7 +1364,7 @@ function nonEmpty(currentID,prevID)
        whiteKingPos=prevID;
        }
    }
-   if(flag=="black" && bflag)
+   else if(flag=="black" && bflag)
    {x=0;
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=y;  
