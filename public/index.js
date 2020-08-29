@@ -1536,7 +1536,7 @@ function wkingcheck(whiteKingPos){
         }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1558,7 +1558,7 @@ function wkingcheck(whiteKingPos){
         }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1580,7 +1580,7 @@ function wkingcheck(whiteKingPos){
         }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1602,7 +1602,7 @@ function wkingcheck(whiteKingPos){
         }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
