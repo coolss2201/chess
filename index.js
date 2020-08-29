@@ -5,7 +5,7 @@
     var c1="",c2="",c3="",c4="";
     var num=1;
     var w=document.getElementById("74").innerHTML;
-    var b=document.getElementById("14").innerHTML;
+    var b=document.getElementById("04").innerHTML;
     var whiteKingPos="74",blackKingPos="04";
     var flag="white";
     var i=11,j=0,k=1,l=8;
@@ -1278,8 +1278,9 @@ function nonEmpty(currentID,prevID)
        document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
        document.getElementById(currentID).classList.add(n);
        flag="white"
-       if(z==b)
+       if(z==b){
        blackKingPos=prevID;
+       }
    }
    if(x==1)
    document.getElementById("myAudio").play()
