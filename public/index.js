@@ -1342,7 +1342,7 @@ function nonEmpty(currentID,prevID)
     }
     else if(flag=="black" && !bflag){
         document.getElementById(i.toString()+j.toString()).innerHTML=y;
-        if(i+1<=8)
+        if(i+10<=81)
         i+=10
         else{
         j++;
