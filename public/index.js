@@ -1480,9 +1480,9 @@ function nonEmpty(currentID,prevID)
        }
    }
    if(c=="b")
-   flag="white"
-   else if(c=="w")
    flag="black"
+   else if(c=="w")
+   flag="white"
 
 
   if((cflag=="white" && !wflag) ||(cflag=="black" && !bflag)) {var send = [currentID,prevID]
