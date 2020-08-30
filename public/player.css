@@ -15,6 +15,7 @@ background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 56%
     font-weight: bold;
     font-size:1.2rem;
     box-shadow: black 4px 4px 2px;
+    color:white
 }
 header{
     position: relative;
