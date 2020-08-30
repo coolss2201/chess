@@ -38,7 +38,7 @@
             modal:true,
             draggable:false,
             resizable:false,
-            title:"Sayan & Suman Chess"
+            title:"Sayan & Suman's Chess"
 
         });
     }
@@ -158,7 +158,13 @@ function playerconnectedordisconnected(num){
         console.log(this.id)
         console.log("num="+num+"ready="+ready+"enemyready="+enemyready)
         if(num==0 && (!ready || !enemyready))
-        alert("please tell your friend to be ready")
+        $("#another").dialog({
+            modal:true,
+            draggable:false,
+            resizable:false,
+            title:"Sayan & Suman's Chess"
+
+        })
         else{
         if(num==0 && flag=="white"){
         startchess(this.id)

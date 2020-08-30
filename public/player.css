@@ -4,12 +4,17 @@
 }
 body{
     
-    
+    background: rgb(131,58,180);
+background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 56%, rgba(252,176,69,1) 100%);
 }
 #start{
-    background-color:red;
+    background-color:blue;
     margin-left:46%;
     margin-top:10px;
+    border:solid 2px black;
+    font-weight: bold;
+    font-size:1.2rem;
+    box-shadow: black 4px 4px 2px;
 }
 header{
     position: relative;
@@ -100,7 +105,7 @@ header{
   .no-close .ui-dialog-titlebar-close {
     display: none;
   }
-#msg{
+.msg{
     color:red;
     text-align: center;
     font-weight: bold;
