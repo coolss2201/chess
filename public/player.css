@@ -100,11 +100,14 @@ header{
   }
 
 
-@media(max-width:1000px)
+@media(max-width:650px)
 {body{
     background-image: url("back1.png");
     background-size: auto;
     
+}
+header{
+    width:650px;
 }
 #main{
     display:grid;
@@ -115,6 +118,10 @@ header{
     "#left"
     ".chessboard" 
     "#right";
+}
+#start{
+    margin-left:40%;
+    margin-top:20px;
 }
 
     
